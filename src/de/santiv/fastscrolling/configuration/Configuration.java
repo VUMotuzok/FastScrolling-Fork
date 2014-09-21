@@ -23,12 +23,10 @@ import java.awt.event.KeyEvent;
 
 public class Configuration implements Configurable {
     public static final String STEP_DEFAULT_VALUE = "1000";
-    public static final String HOTKEY_DEFAULT_VALUE = "CTRL";
+    public static final String HOTKEY_DEFAULT_VALUE = Hotkey.CTRL.name();
 
     private JTextField step;
     private JComboBox<Hotkey> hotkey;
-
-    private JTextField debugKeyCode;
 
     private boolean modified = false;
 
@@ -47,7 +45,6 @@ public class Configuration implements Configurable {
     @Nullable
     @Override
     public JComponent createComponent() {
-//        initDebugComponent();
         initComponents();
         loadValues();
         initListeners();
@@ -59,11 +56,6 @@ public class Configuration implements Configurable {
         builder.add(step, cc.rc(1, 3));
         builder.addLabel(Strings.CONF__HOTKEY.getDescription(), cc.rc(3, 1));
         builder.add(hotkey, cc.rc(3, 3));
-
-        if (debugKeyCode != null) {
-            builder.addLabel("Debug-KeyListener", cc.rc(5, 1));
-            builder.add(debugKeyCode, cc.rcw(5, 3, 2));
-        }
 
         return builder.getPanel();
     }
@@ -135,38 +127,13 @@ public class Configuration implements Configurable {
 
     }
 
-    private void initDebugComponent() {
-        debugKeyCode = new JTextField();
-        debugKeyCode.setEditable(false);
-        debugKeyCode.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                debugPrint(e);
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                debugPrint(e);
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                debugPrint(e);
-            }
-        });
-    }
-
-    private void debugPrint(KeyEvent e) {
-        debugKeyCode.setText(e.toString());
-        System.out.println(e);
-    }
 
     public static int loadStepValue() {
         return Integer.valueOf(PropertiesComponent.getInstance().getValue(Strings.getPropertyPath(Strings.CONF__STEP), STEP_DEFAULT_VALUE));
     }
 
     private void saveStepValue(String value) {
-        PropertiesComponent.getInstance().setValue("FastScrolling.step", value);
+        PropertiesComponent.getInstance().setValue(Strings.getPropertyPath(Strings.CONF__STEP), value);
     }
 
     public static Hotkey loadHotkey() {
@@ -174,6 +141,6 @@ public class Configuration implements Configurable {
     }
 
     public void saveHotkey(Hotkey hotkey) {
-        PropertiesComponent.getInstance().setValue("FastScrolling.hotkey", hotkey.name());
+        PropertiesComponent.getInstance().setValue(Strings.getPropertyPath(Strings.CONF__HOTKEY), hotkey.name());
     }
 }

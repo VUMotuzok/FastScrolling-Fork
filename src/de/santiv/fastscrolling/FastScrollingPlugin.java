@@ -19,7 +19,7 @@ public class FastScrollingPlugin implements ProjectComponent {
     }
 
     public void initComponent() {
-        LOGGER.info("Initialize " + getComponentName() + "...");
+        LOGGER.info("Initialize " + getComponentName());
 
         project.getMessageBus().connect().subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorListener());
     }
