@@ -1,4 +1,4 @@
-package de.santiv.fastscrolling;
+package de.santiv.fastscrolling.configuration;
 
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.options.Configurable;
@@ -7,6 +7,8 @@ import com.intellij.openapi.ui.ComboBox;
 import com.jgoodies.forms.builder.PanelBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+import de.santiv.fastscrolling.enums.FastScrollingHotkey;
+import de.santiv.fastscrolling.enums.Strings;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,7 +19,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 
-public class FastScrollingSettings implements Configurable {
+public class Configuration implements Configurable {
+    public static final String STEP_DEFAULT_VALUE = "1000";
+    public static final String HOTKEY_DEFAULT_VALUE = "CTRL";
+    
     private JTextField step;
     private JComboBox<FastScrollingHotkey> hotkey;
 
@@ -26,7 +31,7 @@ public class FastScrollingSettings implements Configurable {
     @Nls
     @Override
     public String getDisplayName() {
-        return "Fast Scrolling";
+        return Strings.CONF__DISPLAY_NAME.getDescription();
     }
 
     @Nullable
@@ -45,9 +50,9 @@ public class FastScrollingSettings implements Configurable {
         PanelBuilder builder = new PanelBuilder(new FormLayout("pref, 10dlu, 50dlu, 50dlu", "p, 5dlu, p"));
 
         CellConstraints cc = new CellConstraints();
-        builder.addLabel("Step", cc.rcw(1, 1, 2));
+        builder.addLabel(Strings.CONF__STEP.getDescription(), cc.rcw(1, 1, 2));
         builder.add(step, cc.rc(1, 3));
-        builder.addLabel("Hotkey", cc.rc(3, 1));
+        builder.addLabel(Strings.CONF__HOTKEY.getDescription(), cc.rc(3, 1));
         builder.add(hotkey, cc.rc(3, 3));
 
         return builder.getPanel();
@@ -120,7 +125,7 @@ public class FastScrollingSettings implements Configurable {
     }
 
     public static int loadStepValue() {
-        return Integer.valueOf(PropertiesComponent.getInstance().getValue("FastScrolling.step", "1000"));
+        return Integer.valueOf(PropertiesComponent.getInstance().getValue(Strings.getPropertyPath(Strings.CONF__STEP), STEP_DEFAULT_VALUE));
     }
 
     private void saveStepValue(String value) {
@@ -128,7 +133,7 @@ public class FastScrollingSettings implements Configurable {
     }
 
     public static FastScrollingHotkey loadHotkey() {
-        return FastScrollingHotkey.valueOf(PropertiesComponent.getInstance().getValue("FastScrolling.hotkey", "CTRL"));
+        return FastScrollingHotkey.valueOf(PropertiesComponent.getInstance().getValue(Strings.getPropertyPath(Strings.CONF__HOTKEY), HOTKEY_DEFAULT_VALUE));
     }
 
     public void saveHotkey(FastScrollingHotkey hotkey) {

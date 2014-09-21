@@ -25,7 +25,7 @@
   -->
 
   <extensions defaultExtensionNs="com.intellij">
-      <applicationConfigurable instance="de.santiv.fastscrolling.FastScrollingSettings"></applicationConfigurable>
+      <applicationConfigurable instance="de.santiv.fastscrolling.configuration.Configuration"></applicationConfigurable>
   </extensions>
 
 
