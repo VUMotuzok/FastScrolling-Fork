@@ -1,3 +1,5 @@
+package de.santiv.fastscrolling.listener;
+
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.TextEditor;

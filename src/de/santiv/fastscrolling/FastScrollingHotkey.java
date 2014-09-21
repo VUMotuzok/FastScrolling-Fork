@@ -1,3 +1,4 @@
+package de.santiv.fastscrolling;
 
 public enum FastScrollingHotkey {
     CTRL("Ctrl", 17),

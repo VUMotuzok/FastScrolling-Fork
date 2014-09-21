@@ -25,7 +25,7 @@
   -->
 
   <extensions defaultExtensionNs="com.intellij">
-      <applicationConfigurable instance="FastScrollingSettings"></applicationConfigurable>
+      <applicationConfigurable instance="de.santiv.fastscrolling.FastScrollingSettings"></applicationConfigurable>
   </extensions>
 
 
@@ -33,17 +33,9 @@
   <project-components>
     <!-- Add your project components here -->
       <component>
-          <implementation-class>FastScrollingPlugin</implementation-class>
+          <implementation-class>de.santiv.fastscrolling.FastScrollingPlugin</implementation-class>
       </component>
   </project-components>
 
-    <actions>
-        <group id="MyPlugin.SampleMenu" text="_Sample Menu" description="Sample menu">
-            <add-to-group group-id="MainMenu" anchor="last"  />
-            <action id="Fast.Textboxes" class="FastScrolling" text="Text _Boxes" description="A test menu item" />
-            <action id="Myplugin.Dialogs" class="FastScrolling" text="Show _Dialog" description="A test menu item" />
-        </group>
-
-    </actions>
 
 </idea-plugin>

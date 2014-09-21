@@ -1,3 +1,5 @@
+package de.santiv.fastscrolling;
+
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;
@@ -24,7 +26,7 @@ public class FastScrollingSettings implements Configurable {
     @Nls
     @Override
     public String getDisplayName() {
-        return "FastScrolling";
+        return "Fast Scrolling";
     }
 
     @Nullable
