@@ -30,6 +30,10 @@ public class FastScrollingKeyListener extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if (fastScrollingEnabled) {
+            return;
+        }
+
         if (e.getModifiers() == modifiers) {
             activateFastScrolling();
         }
@@ -37,7 +41,7 @@ public class FastScrollingKeyListener extends KeyAdapter {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (!e.isActionKey()) {
+        if(!fastScrollingEnabled) {
             return;
         }
 
@@ -57,9 +61,6 @@ public class FastScrollingKeyListener extends KeyAdapter {
     }
 
     private void activateFastScrolling() {
-        if (fastScrollingEnabled) {
-            return;
-        }
         LOGGER.fine("activate fast scrolling");
 
         fastScrollingEnabled = true;

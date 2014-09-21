@@ -14,9 +14,11 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -27,6 +29,8 @@ public class Configuration implements Configurable {
 
     private JTextField step;
     private JComboBox<Hotkey> hotkey;
+
+    private JLabel reopenInfoLabel;
 
     private boolean modified = false;
 
@@ -46,25 +50,26 @@ public class Configuration implements Configurable {
     @Override
     public JComponent createComponent() {
         initComponents();
-        loadValues();
+        loadAndSetValues();
         initListeners();
 
         // @formatter:off
-        PanelBuilder builder = new PanelBuilder(new FormLayout("pref, 10dlu, 50dlu, 50dlu",
+        PanelBuilder builder = new PanelBuilder(new FormLayout("pref, 10dlu, 50dlu, 5dlu, pref",
                                                                "p, 5dlu, " +
                                                                "p, 5dlu"));
 
         CellConstraints cc = new CellConstraints();
-        builder.addLabel(Strings.CONF__STEP.getDescription(),       cc.rcw(1, 1, 2));
+        builder.addLabel(Strings.CONF__STEP.getDescription(),       cc.rc(1, 1));
         builder.add(step,                                           cc.rc(1, 3));
         builder.addLabel(Strings.CONF__HOTKEY.getDescription(),     cc.rc(3, 1));
         builder.add(hotkey,                                         cc.rc(3, 3));
+        builder.add(reopenInfoLabel,                                cc.rc(3, 5));
         // @formatter:on
 
         return builder.getPanel();
     }
 
-    private void loadValues() {
+    private void loadAndSetValues() {
         step.setText(String.valueOf(loadStepValue()));
         hotkey.setSelectedItem(loadHotkey());
     }
@@ -91,8 +96,18 @@ public class Configuration implements Configurable {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 setDirty();
+                showReopenInfo();
             }
         });
+    }
+
+    private void showReopenInfo() {
+        if (hotkey.getSelectedItem().toString().equals(loadHotkey().toString())) {
+            reopenInfoLabel.setText("");
+        } else {
+            reopenInfoLabel.setText(Strings.CONF__REOPEN_INFO.getDescription());
+            reopenInfoLabel.setForeground(Color.red);
+        }
     }
 
     private void setDirty() {
@@ -103,6 +118,8 @@ public class Configuration implements Configurable {
         step = new JTextField();
         hotkey = new ComboBox(Hotkey.values());
         hotkey.setEditable(false);
+
+        reopenInfoLabel = new JLabel();
     }
 
 
@@ -121,6 +138,8 @@ public class Configuration implements Configurable {
 
     @Override
     public void reset() {
+        loadAndSetValues();
+        modified = false;
     }
 
     @Override

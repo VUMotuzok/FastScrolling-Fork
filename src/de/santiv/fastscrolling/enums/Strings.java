@@ -5,7 +5,8 @@ public enum Strings {
 
     CONF__DISPLAY_NAME("Fast-Scrolling"),
     CONF__STEP("Step"),
-    CONF__HOTKEY("Hotkey");
+    CONF__HOTKEY("Hotkey"),
+    CONF__REOPEN_INFO("(You need to reopen your editors or restart the application.)");
 
     private String description;
 

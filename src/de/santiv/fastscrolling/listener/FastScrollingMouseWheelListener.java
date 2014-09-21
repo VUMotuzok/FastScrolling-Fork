@@ -10,10 +10,12 @@ import java.util.logging.Logger;
 
 public class FastScrollingMouseWheelListener implements MouseWheelListener {
     private static final Logger LOGGER = Logger.getLogger(FastScrollingMouseWheelListener.class.getName());
+    private final int currentStep;
     private Editor editor;
 
     public FastScrollingMouseWheelListener(Editor editor) {
         this.editor = editor;
+        this.currentStep = Configuration.loadStepValue();
     }
 
     @Override
@@ -21,10 +23,10 @@ public class FastScrollingMouseWheelListener implements MouseWheelListener {
         ScrollingModel scrollingModel = editor.getScrollingModel();
         LOGGER.finest(String.format("scrolling offset=%s", scrollingModel.getVerticalScrollOffset()));
 
-        int steps = Configuration.loadStepValue();
+        int steps = currentStep;
 
         if (e.getUnitsToScroll() < 0) {
-            steps = -Configuration.loadStepValue();
+            steps = -currentStep;
         }
 
         scrollingModel.disableAnimation();
