@@ -21,35 +21,35 @@ public class FastScrolling extends AnAction {
 
     public FastScrolling() {
         LOGGER.setLevel(Level.ALL);
-        myMouseWheelListener = new FastScrollingMouseWheelListener();
+//        myMouseWheelListener = new FastScrollingMouseWheelListener();
     }
 
     public void actionPerformed(AnActionEvent e) {
-        Project project = e.getData(PlatformDataKeys.PROJECT);
-
-
-        DataKeys.FILE_EDITOR.getData(e.getDataContext());
-
-        theEditor = DataKeys.EDITOR.getData(e.getDataContext());
-
-        myMouseWheelListener.setEditor(theEditor);
-
-        theEditor.getContentComponent().addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-
-                if (e.getKeyCode() == CTRL_KEY) {
-                    activateFastScrolling();
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                if (e.getKeyCode() == CTRL_KEY) {
-                    deactivateFastScrolling();
-                }
-            }
-        });
+//        Project project = e.getData(PlatformDataKeys.PROJECT);
+//
+//
+//        DataKeys.FILE_EDITOR.getData(e.getDataContext());
+//
+//        theEditor = DataKeys.EDITOR.getData(e.getDataContext());
+//
+//        myMouseWheelListener.setEditor(theEditor);
+//
+//        theEditor.getContentComponent().addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyPressed(KeyEvent e) {
+//
+//                if (e.getKeyCode() == CTRL_KEY) {
+//                    activateFastScrolling();
+//                }
+//            }
+//
+//            @Override
+//            public void keyReleased(KeyEvent e) {
+//                if (e.getKeyCode() == CTRL_KEY) {
+//                    deactivateFastScrolling();
+//                }
+//            }
+//        });
 
 
     }

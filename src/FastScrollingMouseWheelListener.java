@@ -8,6 +8,10 @@ public class FastScrollingMouseWheelListener implements MouseWheelListener {
     private static final Logger LOGGER = Logger.getLogger(FastScrollingMouseWheelListener.class.getName());
     private Editor editor;
 
+    public FastScrollingMouseWheelListener(Editor editor) {
+        this.editor = editor;
+    }
+
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
 
