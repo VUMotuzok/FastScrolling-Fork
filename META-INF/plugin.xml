@@ -1,17 +1,18 @@
 <idea-plugin version="2">
-  <id>com.yourcompany.unique.plugin.id</id>
-  <name>Plugin display name here</name>
+  <id>de.santiv.fastscrolling</id>
+  <name>Fast-Scrolling</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="sven@santiv.de" url="http://www.santiv.de">santiv.de</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      <strong>Fast-Scrolling</strong> is a small plugin that allows you to scroll faster up and down in a big file,
+      if you hold down a configurable key (the default is [CTRL]) and scroll.<br>
+
+      It's inspired by the scrolling behavior of <em>Eclipse</em> when you hold down [CTRL] and scroll.<br>
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      1.0: First version
     ]]>
   </change-notes>
 
@@ -28,10 +29,7 @@
       <applicationConfigurable instance="de.santiv.fastscrolling.configuration.Configuration"></applicationConfigurable>
   </extensions>
 
-
-
   <project-components>
-    <!-- Add your project components here -->
       <component>
           <implementation-class>de.santiv.fastscrolling.FastScrollingPlugin</implementation-class>
       </component>
