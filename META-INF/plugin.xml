@@ -6,9 +6,9 @@
 
   <description><![CDATA[
       <strong>Fast-Scrolling</strong> is a small plugin that allows you to scroll faster up and down in a big file,
-      if you hold down a configurable key (the default is [CTRL]) and scroll.<br>
+      by holding down a configurable key (the default is [CTRL]) and moving the mouse wheel.<br>
 
-      It's inspired by the scrolling behavior of <em>Eclipse</em> when you hold down [CTRL] and scroll.<br>
+      It's inspired by the scrolling behavior of <em>Eclipse</em>.
     ]]></description>
 
   <change-notes><![CDATA[
