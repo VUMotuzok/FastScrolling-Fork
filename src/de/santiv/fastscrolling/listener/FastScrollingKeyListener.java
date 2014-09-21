@@ -15,28 +15,36 @@ public class FastScrollingKeyListener extends KeyAdapter {
     private static final Logger LOGGER = Logger.getLogger(FastScrollingKeyListener.class.getName());
 
     private final FastScrollingMouseWheelListener fastScrollingMouseWheelListener;
-    private Editor editor;
+    private final Editor editor;
+    private final Hotkey hotkey;
+    private final int modifiers;
+
     private boolean fastScrollingEnabled = false;
 
     public FastScrollingKeyListener(FileEditor fileEditor) {
         this.editor = ((TextEditor) fileEditor).getEditor();
-        fastScrollingMouseWheelListener = new FastScrollingMouseWheelListener(editor);
+        this.fastScrollingMouseWheelListener = new FastScrollingMouseWheelListener(editor);
+        this.hotkey = Configuration.loadHotkey();
+        this.modifiers = hotkey.getModifiers();
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        Hotkey hotkey = Configuration.loadHotkey();
-
-        if (e.getModifiers() == hotkey.getModifiers()) {
+        if (e.getModifiers() == modifiers) {
             activateFastScrolling();
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        Hotkey hotkey = Configuration.loadHotkey();
+        if (!e.isActionKey()) {
+            return;
+        }
 
-        if (hotkey.isCombination()) {
+        if (e.getKeyCode() == hotkey.getKeyEvent()) {
+            deactivateFastScrolling();
+        }
+        else if (hotkey.isCombination()) {
             List<Hotkey> combinations = hotkey.getCombinations();
 
             for (Hotkey k : combinations) {
@@ -45,8 +53,6 @@ public class FastScrollingKeyListener extends KeyAdapter {
                     break;
                 }
             }
-        } else if (e.getKeyCode() == hotkey.getKeyEvent()) {
-            deactivateFastScrolling();
         }
     }
 
