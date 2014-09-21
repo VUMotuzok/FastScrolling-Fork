@@ -52,8 +52,10 @@ public class FastScrollingSettings implements Configurable {
     }
 
     private void loadValues() {
-        int stepValue = getStepValue();
+        int stepValue = loadStepValue();
         step.setText(String.valueOf(stepValue));
+
+        hotkey.setSelectedItem(loadHotkey());
     }
 
     private void initListeners() {
@@ -99,8 +101,8 @@ public class FastScrollingSettings implements Configurable {
 
     @Override
     public void apply() throws ConfigurationException {
-        setStepValue(step.getText());
-        setHotkey((FastScrollingHotkey)hotkey.getSelectedItem());
+        saveStepValue(step.getText());
+        saveHotkey((FastScrollingHotkey) hotkey.getSelectedItem());
 
         modified = false;
     }
@@ -115,19 +117,19 @@ public class FastScrollingSettings implements Configurable {
 
     }
 
-    public static int getStepValue() {
+    public static int loadStepValue() {
         return Integer.valueOf(PropertiesComponent.getInstance().getValue("FastScrolling.step", "1000"));
     }
 
-    private void setStepValue(String value) {
+    private void saveStepValue(String value) {
         PropertiesComponent.getInstance().setValue("FastScrolling.step", value);
     }
 
-    public static FastScrollingHotkey getHotkey() {
+    public static FastScrollingHotkey loadHotkey() {
         return FastScrollingHotkey.valueOf(PropertiesComponent.getInstance().getValue("FastScrolling.hotkey", "CTRL"));
     }
 
-    public void setHotkey(FastScrollingHotkey hotkey) {
+    public void saveHotkey(FastScrollingHotkey hotkey) {
         PropertiesComponent.getInstance().setValue("FastScrolling.hotkey", hotkey.name());
     }
 }

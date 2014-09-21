@@ -13,12 +13,12 @@ public class FastScrollingMouseWheelListener implements MouseWheelListener {
 
         LOGGER.finest(String.format("scrolling offset=%s", editor.getScrollingModel().getVerticalScrollOffset()));
 
-        System.out.println("StepValue=" + FastScrollingSettings.getStepValue());
+        System.out.println("StepValue=" + FastScrollingSettings.loadStepValue());
 
 
-        int steps = FastScrollingSettings.getStepValue();
+        int steps = FastScrollingSettings.loadStepValue();
         if (e.getUnitsToScroll() < 0) {
-            steps = -FastScrollingSettings.getStepValue();
+            steps = -FastScrollingSettings.loadStepValue();
         }
         editor.getScrollingModel().scrollVertically(editor.getScrollingModel().getVerticalScrollOffset() + steps);
 
