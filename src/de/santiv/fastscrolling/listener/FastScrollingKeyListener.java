@@ -15,7 +15,6 @@ public class FastScrollingKeyListener extends KeyAdapter {
     private static final Logger LOGGER = Logger.getLogger(FastScrollingKeyListener.class.getName());
 
     private final FastScrollingMouseWheelListener fastScrollingMouseWheelListener;
-
     private Editor editor;
     private boolean fastScrollingEnabled = false;
 
@@ -26,7 +25,6 @@ public class FastScrollingKeyListener extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
         Hotkey hotkey = Configuration.loadHotkey();
 
         if (e.getModifiers() == hotkey.getModifiers()) {
@@ -56,7 +54,7 @@ public class FastScrollingKeyListener extends KeyAdapter {
         if (fastScrollingEnabled) {
             return;
         }
-        LOGGER.fine("activateFastScrolling");
+        LOGGER.fine("activate fast scrolling");
 
         fastScrollingEnabled = true;
 
@@ -64,7 +62,8 @@ public class FastScrollingKeyListener extends KeyAdapter {
     }
 
     private void deactivateFastScrolling() {
-        LOGGER.fine("deactivateFastScrolling");
+        LOGGER.fine("deactivate fast scrolling");
+
         fastScrollingEnabled = false;
         editor.getContentComponent().removeMouseWheelListener(fastScrollingMouseWheelListener);
     }

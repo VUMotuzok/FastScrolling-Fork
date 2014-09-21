@@ -1,6 +1,7 @@
 package de.santiv.fastscrolling.listener;
 
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.editor.ScrollingModel;
 import de.santiv.fastscrolling.configuration.Configuration;
 
 import java.awt.event.MouseWheelEvent;
@@ -17,15 +18,17 @@ public class FastScrollingMouseWheelListener implements MouseWheelListener {
 
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-        LOGGER.finest(String.format("scrolling offset=%s", editor.getScrollingModel().getVerticalScrollOffset()));
+        ScrollingModel scrollingModel = editor.getScrollingModel();
+        LOGGER.finest(String.format("scrolling offset=%s", scrollingModel.getVerticalScrollOffset()));
 
         int steps = Configuration.loadStepValue();
+
         if (e.getUnitsToScroll() < 0) {
             steps = -Configuration.loadStepValue();
         }
 
-        editor.getScrollingModel().disableAnimation();
-        editor.getScrollingModel().scrollVertically(editor.getScrollingModel().getVerticalScrollOffset() + steps);
-        editor.getScrollingModel().enableAnimation();
+        scrollingModel.disableAnimation();
+        scrollingModel.scrollVertically(scrollingModel.getVerticalScrollOffset() + steps);
+        scrollingModel.enableAnimation();
     }
 }

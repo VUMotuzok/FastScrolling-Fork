@@ -1,39 +1,41 @@
 <idea-plugin version="2">
-  <id>de.santiv.fastscrolling</id>
-  <name>Fast-Scrolling</name>
-  <version>1.0</version>
-  <vendor email="sven@santiv.de" url="http://www.santiv.de">santiv.de</vendor>
+    <id>de.santiv.fastscrolling</id>
+    <name>Fast-Scrolling</name>
+    <version>1.0</version>
+    <vendor email="sven@santiv.de" url="http://www.santiv.de">santiv.de</vendor>
 
-  <description><![CDATA[
-      <strong>Fast-Scrolling</strong> is a small plugin that allows you to scroll faster up and down in a big file,
-      by holding down a configurable key (the default is [CTRL]) and moving the mouse wheel.<br>
+    <description><![CDATA[
 
-      It's inspired by the scrolling behavior of <em>Eclipse</em>.
+    <strong>Fast-Scrolling</strong> is a small plugin, that allows you to scroll up and down faster in a big file, by holding a configurable key (the default key is <em>[CTRL]</em>) and moving the mouse wheel.<br>
+    <br>
+    Inspired by the scrolling behavior of Eclipse.<br>
+
     ]]></description>
 
-  <change-notes><![CDATA[
-      1.0: First version
+    <change-notes><![CDATA[
+     21.11.2014: Initial project release
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="131"/>
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="131"/>
 
-  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
 
-  <extensions defaultExtensionNs="com.intellij">
-      <applicationConfigurable instance="de.santiv.fastscrolling.configuration.Configuration"></applicationConfigurable>
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable
+                instance="de.santiv.fastscrolling.configuration.Configuration"></applicationConfigurable>
+    </extensions>
 
-  <project-components>
-      <component>
-          <implementation-class>de.santiv.fastscrolling.FastScrollingPlugin</implementation-class>
-      </component>
-  </project-components>
+    <project-components>
+        <component>
+            <implementation-class>de.santiv.fastscrolling.FastScrollingPlugin</implementation-class>
+        </component>
+    </project-components>
 
 
 </idea-plugin>

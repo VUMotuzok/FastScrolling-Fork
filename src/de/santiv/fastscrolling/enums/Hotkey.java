@@ -18,7 +18,6 @@ public enum Hotkey {
 
     private List<Hotkey> combinations;
 
-
     Hotkey(String name, int keyEvent, int actionEvent) {
         this.name = name;
         this.keyEvent = keyEvent;
