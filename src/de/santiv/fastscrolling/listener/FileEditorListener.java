@@ -25,10 +25,15 @@ public class FileEditorListener implements FileEditorManagerListener {
         }
     }
 
-    private void installNewListener(String filePath, FileEditor e) {
-        Editor editor = ((TextEditor) e).getEditor();
-        FastScrollingKeyListener l = new FastScrollingKeyListener(e);
-        editor.getContentComponent().addKeyListener(l);
+    private void installNewListener(String filePath, FileEditor fileEditor) {
+        final Editor editor = ((TextEditor) fileEditor).getEditor();
+
+        final MouseWheelListener fastScrollingMouseWheelListener = new MouseWheelListener(editor);
+        KeyListener keyListener = new KeyListener(editor, fastScrollingMouseWheelListener);
+        FocusListener focusListener = new FocusListener(editor, fastScrollingMouseWheelListener);
+
+        editor.getContentComponent().addKeyListener(keyListener);
+        editor.getContentComponent().addFocusListener(focusListener);
 
         LOGGER.fine("Install new listener for " + filePath);
     }

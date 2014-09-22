@@ -5,15 +5,16 @@ import com.intellij.openapi.editor.ScrollingModel;
 import de.santiv.fastscrolling.configuration.Configuration;
 
 import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.util.logging.Logger;
 
-public class FastScrollingMouseWheelListener implements MouseWheelListener {
-    private static final Logger LOGGER = Logger.getLogger(FastScrollingMouseWheelListener.class.getName());
+public class MouseWheelListener implements java.awt.event.MouseWheelListener {
+    private static final Logger LOGGER = Logger.getLogger(MouseWheelListener.class.getName());
     private final int currentStep;
     private Editor editor;
 
-    public FastScrollingMouseWheelListener(Editor editor) {
+    private boolean fastScrollingEnabled = false;
+
+    public MouseWheelListener(Editor editor) {
         this.editor = editor;
         this.currentStep = Configuration.loadStepValue();
     }
@@ -32,5 +33,13 @@ public class FastScrollingMouseWheelListener implements MouseWheelListener {
         scrollingModel.disableAnimation();
         scrollingModel.scrollVertically(scrollingModel.getVerticalScrollOffset() + steps);
         scrollingModel.enableAnimation();
+    }
+
+    public boolean isFastScrollingEnabled() {
+        return fastScrollingEnabled;
+    }
+
+    public void setFastScrollingEnabled(boolean fastScrollingEnabled) {
+        this.fastScrollingEnabled = fastScrollingEnabled;
     }
 }
