@@ -26,6 +26,10 @@ public class FileEditorListener implements FileEditorManagerListener {
     }
 
     private void installNewListener(String filePath, FileEditor fileEditor) {
+        if(!(fileEditor instanceof TextEditor)) {
+            return;
+        }
+
         final Editor editor = ((TextEditor) fileEditor).getEditor();
 
         final MouseWheelListener fastScrollingMouseWheelListener = new MouseWheelListener(editor);

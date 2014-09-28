@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>de.santiv.fastscrolling</id>
     <name>Fast-Scrolling</name>
-    <version>1.1</version>
+    <version>1.1.1</version>
     <vendor email="sven@santiv.de" url="http://www.santiv.de">Sven Drees</vendor>
 
     <description><![CDATA[
@@ -13,6 +13,7 @@
     ]]></description>
 
     <change-notes><![CDATA[
+     v1.1.1 - 28.11.2014: Casting exception fix. <p/>
      v1.1 - 22.11.2014: Deactivate <em>Fast-Scrolling</em> at focus lost.<p/>
      v1.0 - 21.11.2014: Initial project release
     ]]>
