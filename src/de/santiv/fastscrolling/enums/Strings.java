@@ -17,8 +17,4 @@ public enum Strings {
     public String getDescription() {
         return description;
     }
-
-    public static String getPropertyPath(Strings value) {
-        return "de.santiv.fastscrolling." + value.name();
-    }
 }

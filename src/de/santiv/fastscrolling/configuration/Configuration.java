@@ -1,12 +1,12 @@
 package de.santiv.fastscrolling.configuration;
 
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.ui.ComboBox;
 import com.jgoodies.forms.builder.PanelBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+import de.santiv.fastscrolling.enums.Config;
 import de.santiv.fastscrolling.enums.Hotkey;
 import de.santiv.fastscrolling.enums.Strings;
 import org.jetbrains.annotations.Nls;
@@ -24,9 +24,6 @@ import java.awt.event.ItemListener;
 
 
 public class Configuration implements Configurable {
-    public static final String STEP_DEFAULT_VALUE = "1000";
-    public static final String HOTKEY_DEFAULT_VALUE = Hotkey.CTRL.name();
-
     private JTextField step;
     private JComboBox<Hotkey> hotkey;
 
@@ -70,8 +67,8 @@ public class Configuration implements Configurable {
     }
 
     private void loadAndSetValues() {
-        step.setText(String.valueOf(loadStepValue()));
-        hotkey.setSelectedItem(loadHotkey());
+        step.setText(Config.loadValue(Config.STEP));
+//        hotkey.setSelectedItem(Config.loadEnumValue(Config.HOTKEY, Hotkey.class));
     }
 
     private void initListeners() {
@@ -102,7 +99,7 @@ public class Configuration implements Configurable {
     }
 
     private void showReopenInfo() {
-        if (hotkey.getSelectedItem().toString().equals(loadHotkey().toString())) {
+        if (hotkey.getSelectedItem().toString().equals(Config.loadValue(Config.HOTKEY))) {
             reopenInfoLabel.setText("");
         } else {
             reopenInfoLabel.setText(Strings.CONF__REOPEN_INFO.getDescription());
@@ -130,8 +127,8 @@ public class Configuration implements Configurable {
 
     @Override
     public void apply() throws ConfigurationException {
-        saveStepValue(step.getText());
-        saveHotkey((Hotkey) hotkey.getSelectedItem());
+        Config.saveValue(Config.STEP, step.getText());
+        Config.saveValue(Config.HOTKEY, ((Hotkey) hotkey.getSelectedItem()).name());
 
         modified = false;
     }
@@ -144,22 +141,5 @@ public class Configuration implements Configurable {
 
     @Override
     public void disposeUIResources() {
-    }
-
-
-    public static int loadStepValue() {
-        return Integer.valueOf(PropertiesComponent.getInstance().getValue(Strings.getPropertyPath(Strings.CONF__STEP), STEP_DEFAULT_VALUE));
-    }
-
-    private void saveStepValue(String value) {
-        PropertiesComponent.getInstance().setValue(Strings.getPropertyPath(Strings.CONF__STEP), value);
-    }
-
-    public static Hotkey loadHotkey() {
-        return Hotkey.valueOf(PropertiesComponent.getInstance().getValue(Strings.getPropertyPath(Strings.CONF__HOTKEY), HOTKEY_DEFAULT_VALUE));
-    }
-
-    public void saveHotkey(Hotkey hotkey) {
-        PropertiesComponent.getInstance().setValue(Strings.getPropertyPath(Strings.CONF__HOTKEY), hotkey.name());
     }
 }

@@ -3,6 +3,7 @@ package de.santiv.fastscrolling.listener;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.ScrollingModel;
 import de.santiv.fastscrolling.configuration.Configuration;
+import de.santiv.fastscrolling.enums.Config;
 
 import java.awt.event.MouseWheelEvent;
 import java.util.logging.Logger;
@@ -16,7 +17,7 @@ public class MouseWheelListener implements java.awt.event.MouseWheelListener {
 
     public MouseWheelListener(Editor editor) {
         this.editor = editor;
-        this.currentStep = Configuration.loadStepValue();
+        this.currentStep = Config.loadIntValue(Config.STEP);
     }
 
     @Override

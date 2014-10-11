@@ -1,7 +1,7 @@
 package de.santiv.fastscrolling.listener;
 
 import com.intellij.openapi.editor.Editor;
-import de.santiv.fastscrolling.configuration.Configuration;
+import de.santiv.fastscrolling.enums.Config;
 import de.santiv.fastscrolling.enums.Hotkey;
 
 import java.awt.event.KeyAdapter;
@@ -23,7 +23,7 @@ public class KeyListener extends KeyAdapter {
         this.editor = editor;
         this.fastScrollingMouseWheelListener = fastScrollingMouseWheelListener;
 
-        this.hotkey = Configuration.loadHotkey();
+        this.hotkey = Config.loadEnumValue(Config.HOTKEY, Hotkey.class);
         this.modifiers = hotkey.getModifiers();
     }
 
