@@ -4,8 +4,7 @@ import com.intellij.ide.util.PropertiesComponent;
 
 public enum Config {
     STEP(500),
-    HOTKEY(Hotkey.ALT.name())
-    ;
+    HOTKEY(Hotkey.CTRL.name());
 
     public static final String PROPERTY_PATH_PREFIX = "de.santiv.fastscrolling.";
 
