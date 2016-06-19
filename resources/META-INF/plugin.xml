@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>de.santiv.fastscrolling</id>
     <name>Fast-Scrolling</name>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <vendor email="sven@santiv.de" url="http://www.santiv.de">Sven Drees</vendor>
 
     <description><![CDATA[
@@ -13,10 +13,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
-     v.1.2-SNAPSHOT: Configuration refactoring <p/>
-     v1.1.1 - 28.09.2014: Casting exception fix. <p/>
-     v1.1 - 22.09.2014: Deactivate <em>Fast-Scrolling</em> at focus lost.<p/>
-     v1.0 - 21.09.2014: Initial project release
+ v.1.2  - 19.06.2016: Enable plugin support for other platform (i.e. PhpStorm). Changing default hotkey to ALT and step to 500 (better experience). <p/>
+ v1.1.1 - 28.09.2014: Casting exception fix. <p/>
+ v1.1   - 22.09.2014: Deactivate <em>Fast-Scrolling</em> at focus lost.<p/>
+ v1.0   - 21.09.2014: Initial project release
     ]]>
     </change-notes>
 
