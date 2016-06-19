@@ -1,0 +1,45 @@
+<idea-plugin version="2">
+    <id>de.santiv.fastscrolling</id>
+    <name>Fast-Scrolling</name>
+    <version>1.2</version>
+    <vendor email="sven@santiv.de" url="http://www.santiv.de">Sven Drees</vendor>
+
+    <description><![CDATA[
+
+    <strong>Fast-Scrolling</strong> is a small plugin, that allows you to scroll up and down faster in a big file, by holding a configurable key (the default key is <em>[CTRL]</em>) and moving the mouse wheel.<br>
+    If you any problems try to change the hotkey to <em>[ALT]</em>.
+    <br>
+    Inspired by the scrolling behavior of Eclipse.<br>
+
+    ]]></description>
+
+    <change-notes><![CDATA[
+ v.1.2  - 19.06.2016: Enable plugin support for other platform (only tested with PhpStorm 8.0.1). Changing default step to 500 for a better experience. <p/>
+ v1.1.1 - 28.09.2014: Casting exception fix. <p/>
+ v1.1   - 22.09.2014: Deactivate <em>Fast-Scrolling</em> at focus lost.<p/>
+ v1.0   - 21.09.2014: Initial project release
+    ]]>
+    </change-notes>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="131"/>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends>com.intellij.modules.lang</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable
+                instance="de.santiv.fastscrolling.configuration.Configuration"></applicationConfigurable>
+    </extensions>
+
+    <project-components>
+        <component>
+            <implementation-class>de.santiv.fastscrolling.FastScrollingPlugin</implementation-class>
+        </component>
+    </project-components>
+
+
+</idea-plugin>
