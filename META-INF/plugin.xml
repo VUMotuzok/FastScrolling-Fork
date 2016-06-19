@@ -18,21 +18,21 @@
      v1.1 - 22.09.2014: Deactivate <em>Fast-Scrolling</em> at focus lost.<p/>
      v1.0 - 21.09.2014: Initial project release
     ]]>
-</change-notes>
+    </change-notes>
 
-        <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-<idea-version since-build="131"/>
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="131"/>
 
-        <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
-             on how to target different products -->
-        <!-- uncomment to enable plugin in all products
-        <depends>com.intellij.modules.lang</depends>
-        -->
-
-<extensions defaultExtensionNs="com.intellij">
-<applicationConfigurable
-        instance="de.santiv.fastscrolling.configuration.Configuration"></applicationConfigurable>
-</extensions>
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends>com.intellij.modules.lang</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable
+                instance="de.santiv.fastscrolling.configuration.Configuration"></applicationConfigurable>
+    </extensions>
 
     <project-components>
         <component>
