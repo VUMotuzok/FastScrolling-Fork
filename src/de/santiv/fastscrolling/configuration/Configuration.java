@@ -68,7 +68,7 @@ public class Configuration implements Configurable {
 
     private void loadAndSetValues() {
         step.setText(Config.loadValue(Config.STEP));
-//        hotkey.setSelectedItem(Config.loadEnumValue(Config.HOTKEY, Hotkey.class));
+        hotkey.setSelectedItem(Config.loadEnumValue(Config.HOTKEY, Hotkey.class));
     }
 
     private void initListeners() {
