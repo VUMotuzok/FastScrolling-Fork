@@ -14,7 +14,7 @@
     ]]></description>
 
     <change-notes><![CDATA[
- v.1.2  - 19.06.2016: Enable plugin support for other platform (only tested with PhpStorm 8.0.1). Changing default step to 500 for a better experience. <p/>
+ v.1.2  - 19.06.2016: Enable plugin support for other platforms (only tested with PhpStorm 8.0.1). Changing default step to 500 for a better experience. <p/>
  v1.1.1 - 28.09.2014: Casting exception fix. <p/>
  v1.1   - 22.09.2014: Deactivate <em>Fast-Scrolling</em> at focus lost.<p/>
  v1.0   - 21.09.2014: Initial project release
